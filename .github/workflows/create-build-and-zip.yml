@@ -7,7 +7,7 @@ on:
 
 jobs:
     create:
-        uses: ./build-and-zip.yml
+        uses: ./.github/workflows/build-and-zip.yml
         with:
           tag: ${{ github.ref_name }}
         
