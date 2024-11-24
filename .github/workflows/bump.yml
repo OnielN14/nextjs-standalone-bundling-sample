@@ -14,17 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       contents: write
+    outputs:
+      tag: ${{ steps.autotagging.outputs.new-tag }}
     steps:
       - id: autotagging
         uses: phish108/autotag-action@v1.1.64
         with:
           github-token: ${{ env.GITHUB_TOKEN }}
           with-v: TRUE
-
-    outputs:
-      tag: ${{ steps.autotagging.outputs.new-tag }}
   
   build-and-zip:
+    needs: tagging
     permissions: 
       contents: write
     uses: ./.github/workflows/build-and-zip.yml
