@@ -1,7 +1,6 @@
 name: Build and Archive
 
 on:
-  create:
   push: 
     tags: 
       - "*"
