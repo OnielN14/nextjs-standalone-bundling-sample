@@ -1,12 +1,14 @@
 name: Build and Archive
 
 on:
+  create: 
+    
   push: 
     tags: 
-      - "v*.*.*"
+      - "**"
 
 env:
-  ARCHIVE_NAME: ${{github.event.repository.name}}-${{ github.ref_name }}
+  ARCHIVE_NAME: ${{github.event.repository.name}}
 
 jobs:
   build:
