@@ -1,0 +1,13 @@
+name: create-build-and-zip
+
+on:
+    push: 
+        tags: 
+            - "*"
+
+jobs:
+    create:
+        uses: ./build-and-zip.yml
+        with:
+          tag: ${{ github.ref_name }}
+        

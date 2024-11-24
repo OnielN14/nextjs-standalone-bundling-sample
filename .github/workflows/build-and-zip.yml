@@ -1,17 +1,14 @@
-name: Build and Archive
+name: build-and-zip
 
 on:
-  workflow_run: 
-    workflows: ['tag-bump']
-    types: 
-      - completed
-
-  push: 
-    tags: 
-      - "*"
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
 
 env:
-  ARCHIVE_NAME: ${{github.event.repository.name}}
+  ARCHIVE_NAME: ${{ github.event.repository.name }}-${{ inputs.tag }}
 
 jobs:
   build:
@@ -21,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
       - name: Setup Bun (package manager)
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies

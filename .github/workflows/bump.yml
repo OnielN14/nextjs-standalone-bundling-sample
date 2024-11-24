@@ -1,4 +1,4 @@
-name: tag-bump
+name: bump
 
 on:
   pull_request: 
@@ -9,15 +9,22 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  tag:
+  tagging:
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     permissions: 
       contents: write
-      
     steps:
-      - uses: phish108/autotag-action@v1.1.64
+      - id: autotagging
+        uses: phish108/autotag-action@v1.1.64
         with:
           github-token: ${{ env.GITHUB_TOKEN }}
           with-v: TRUE
-      
+
+    outputs:
+      tag: ${{ steps.autotagging.outputs.new-tag }}
+  
+  build-and-zip:
+    uses: ./build-and-zip.yml
+    with:
+      tag: ${{ needs.tagging.outputs.tag }}
