@@ -12,6 +12,9 @@ jobs:
   tag:
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+      
     steps:
       - uses: phish108/autotag-action@v1.1.64
         with:
