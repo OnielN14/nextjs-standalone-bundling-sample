@@ -1,13 +1,10 @@
 name: Build and Archive
 
 on:
-  create: 
-    tags: 
-      - "**"
-
+  create:
   push: 
     tags: 
-      - "**"
+      - "*"
 
 env:
   ARCHIVE_NAME: ${{github.event.repository.name}}
