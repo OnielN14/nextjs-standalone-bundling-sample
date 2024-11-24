@@ -25,6 +25,8 @@ jobs:
       tag: ${{ steps.autotagging.outputs.new-tag }}
   
   build-and-zip:
+    permissions: 
+      contents: write
     uses: ./.github/workflows/build-and-zip.yml
     with:
       tag: ${{ needs.tagging.outputs.tag }}

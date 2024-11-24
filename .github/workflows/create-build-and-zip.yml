@@ -1,13 +1,15 @@
 name: create-build-and-zip
 
 on:
-    push: 
-        tags: 
-            - "*"
+  push: 
+    tags: 
+      - "*"
 
 jobs:
-    create:
-        uses: ./.github/workflows/build-and-zip.yml
-        with:
-          tag: ${{ github.ref_name }}
-        
+  create:
+    permissions: 
+      contents: write
+    uses: ./.github/workflows/build-and-zip.yml
+    with:
+      tag: ${{ github.ref_name }}
+    
