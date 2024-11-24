@@ -1,6 +1,11 @@
 name: Build and Archive
 
 on:
+  workflow_run: 
+    workflows: ['tag-bump']
+    types: 
+      - completed
+
   push: 
     tags: 
       - "*"

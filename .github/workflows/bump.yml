@@ -1,4 +1,4 @@
-name: Tag Bump
+name: tag-bump
 
 on:
   pull_request: 
@@ -16,18 +16,8 @@ jobs:
       contents: write
       
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: phish108/autotag-action@v1.1.64
         with:
-          fetch-depth: '0'
-
-      # - uses: phish108/autotag-action@v1.1.64
-      #   with:
-      #     github-token: ${{ env.GITHUB_TOKEN }}
-      #     with-v: TRUE
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.71.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
+          github-token: ${{ env.GITHUB_TOKEN }}
+          with-v: TRUE
       
