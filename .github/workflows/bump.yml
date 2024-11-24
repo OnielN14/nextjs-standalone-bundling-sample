@@ -1,0 +1,17 @@
+name: Tag Bump
+
+on:
+  pull_request: 
+    branches: ["main"]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: phish108/autotag-action@v1.1.64
+        with:
+          github-token: ${{ env.GITHUB_TOKEN }}
+          with-v: TRUE
