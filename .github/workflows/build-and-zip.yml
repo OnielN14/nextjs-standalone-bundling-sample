@@ -40,3 +40,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ env.ARCHIVE_NAME }}.zip
+          tag_name: ${{inputs.tag}}
