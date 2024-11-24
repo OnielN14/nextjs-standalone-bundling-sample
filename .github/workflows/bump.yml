@@ -29,4 +29,4 @@ jobs:
       contents: write
     uses: ./.github/workflows/build-and-zip.yml
     with:
-      tag: ${{ needs.tagging.outputs.tag }}
+      tag: v${{ needs.tagging.outputs.tag }}
