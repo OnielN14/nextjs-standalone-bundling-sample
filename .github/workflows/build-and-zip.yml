@@ -33,7 +33,7 @@ jobs:
           mkdir artifact
           cp -R ./public ./artifact
           cp -R ./.next/standalone/. ./artifact
-          mkdir -p ./artifact/static && cp -R ./.next/static/. $_
+          cp -R ./.next/static ./artifact/.next
       - name: Archive artifact directory
         run: cd ./artifact && zip -r ../${{ env.ARCHIVE_NAME }}.zip .
       - name: Upload to release
